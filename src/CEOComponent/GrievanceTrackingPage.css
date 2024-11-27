@@ -1,0 +1,136 @@
+/* For the Header outside the container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.header .back-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.header .back-button:hover {
+  background-color: #0056b3;
+}
+
+/* For the Grievance Tracking Page */
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #333;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(109, 192, 109);
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(109, 192, 109);
+}
+
+.grievance-container {
+  padding: 15px;
+  border: 1px solid rgb(109, 192, 109);
+  border-radius: 4px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.grievance-title {
+  color: rgb(109, 192, 109);
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  margin-top: 10px;
+  color: #555;
+}
+
+.timeline-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.timeline-item {
+  padding: 5px 0;
+}
+
+.no-grievance-message {
+  text-align: center;
+  color: red;
+}
+
+.grievance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.grievance-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.grievance-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.grievance-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.grievance-table td:first-child {
+  font-weight: bold;
+  background-color: #f5f5f5;
+}

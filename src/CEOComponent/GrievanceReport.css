@@ -1,0 +1,61 @@
+/* Container styling */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 80px; /* Adds space below the navbar */
+  }
+  
+  /* Styling the filters container */
+  .filters-container {
+    display: flex;
+    gap: 20px; /* Add spacing between each filter */
+    justify-content: flex-start; /* Align all filters to the left */
+    align-items: center; /* Vertically center-align filters */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows filters to wrap if the screen is too narrow */
+  }
+  
+  /* Styling each filter */
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+  }
+  
+  /* Input and select styling */
+  input,
+  select {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px; /* Consistent width for all inputs */
+    font-size: 14px;
+  }
+  
+  /* Table styling for grievance report */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  h1{
+    text-align: center;
+  }

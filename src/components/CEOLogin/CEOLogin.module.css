@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, sans-serif;
+}
+
+body {
+  background: linear-gradient(90deg, #C7E8C4, #85C88A);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.screen {
+  background: linear-gradient(90deg, #5DA46A, #78B896);
+  position: relative;
+  height: 600px;
+  width: 360px;
+  box-shadow: 0px 0px 24px #5C9860;
+}
+
+.screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+}
+
+.screen__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  clip-path: inset(0 0 0 0);
+}
+
+.screen__background__shape {
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.screen__background__shape1 {
+  height: 520px;
+  width: 520px;
+  background: #FFF;
+  top: -50px;
+  right: 120px;
+  border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+  height: 220px;
+  width: 220px;
+  background: #6C9C88;
+  top: -172px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape3 {
+  height: 540px;
+  width: 190px;
+  background: linear-gradient(270deg, #5DA46A, #6E9986);
+  top: -24px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape4 {
+  height: 400px;
+  width: 200px;
+  background: #78B896;
+  top: 420px;
+  right: 50px;
+  border-radius: 60px;
+}
+
+.login {
+  width: 320px;
+  padding: 30px;
+  padding-top: 156px;
+}
+
+.login__field {
+  padding: 20px 0px;
+  position: relative;
+}
+
+.login__icon {
+  position: absolute;
+  top: 30px;
+  color: #8EA89B;
+}
+
+.login__input {
+  border: none;
+  border-bottom: 2px solid #D4D4D4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: .2s;
+}
+
+.login__input:focus {
+  outline: none;
+  border-bottom-color: #85C88A;
+}
+
+.button {
+    border: none;
+    width: 100px;
+    background-color: #85C88A;
+    border-radius: 30px;
+    padding: 10px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-left: -10px;
+  }
+
+.login__submit {
+  background: #5DA46A;
+  color: #fff;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.button__icon {
+  font-size: 24px;
+  margin-left: auto;
+}
+
+.socialLogin {
+    position: absolute;
+    height: 140px;
+    width: 160px;
+    text-align: center;
+    bottom: 0px;
+    right: 0px;
+    color: #fff;
+  }
+
+  .passwordToggleIcon {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px; /* Adjust this value as needed */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #8EA89B;
+  }
+  

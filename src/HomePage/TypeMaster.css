@@ -1,0 +1,145 @@
+/* Container styles for Grievance Type Master page */
+.grievance-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center text within the container */
+}
+
+.grievance-container h2 {
+  padding: 4px;
+  color: black;
+}
+
+.grievance-header {
+  margin-bottom: 20px;
+}
+
+.grievance-search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.grievance-form {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  margin-bottom: 20px;
+}
+
+.grievance-form button {
+  margin-left: 10px; /* Increase the space between buttons */
+}
+
+.grievance-list table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.grievance-list th,
+.grievance-list td {
+  padding: 10px;
+  text-align: center; /* Center text in table cells */
+  border-bottom: 1px solid #ddd;
+}
+
+.grievance-list th {
+  background-color: #f2f2f2;
+}
+
+.grievance-icon {
+  font-size: 1.5em;
+  margin-right: 5px;
+}
+
+/* Button styles with better specificity */
+.grievance-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn-delete {
+  background-color: #7c1d13; /* Red color for Delete button */
+  color: white;
+  width: 100px;
+  padding: 10px; /* Add padding for better height */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.btn-edit {
+  background-color: #103e5e; /* Blue color for Edit button */
+  color: white;
+  width: 100px;
+  padding: 10px; /* Add padding for better height */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Optional: Add hover effects */
+.btn-delete:hover {
+  background-color: #a82e2c; /* Lighter red on hover */
+}
+
+.btn-edit:hover {
+  background-color: #155a8a; /* Lighter blue on hover */
+}
+
+.user-info img {
+  width: 750px;
+  height: 350px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+}
+
+/* Optional: Customize the table borders */
+.table-bordered th, 
+.table-bordered td,
+.table-bordered tr {
+  border: 1px solid #333; /* Darker border for the table */
+}
+
+.table-bordered th {
+  background-color: rgb(74, 144, 205);
+  color: white;
+}

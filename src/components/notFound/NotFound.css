@@ -1,0 +1,29 @@
+/* NotFoundPage.css */
+.notfound-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f8f9fa; /* Light background color */
+    color: #333; /* Text color */
+}
+
+.notfound-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #dc3545; /* Red color for error */
+}
+
+.notfound-container p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.notfound-container img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
