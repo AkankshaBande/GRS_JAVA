@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Box,
   Typography,
@@ -13,13 +13,13 @@ import {
   TextField,
   Grid,
   MenuItem,
-} from '@mui/material';
-import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Importing the Back Arrow Icon
-import { useTheme } from '@mui/material/styles';
+} from "@mui/material";
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"; // Importing the Back Arrow Icon
+import { useTheme } from "@mui/material/styles";
 
 const Container = styled.div`
   display: flex;
@@ -81,28 +81,30 @@ const Button = styled.button`
 const CEOGrievanceReport = () => {
   const [grievances, setGrievances] = useState([]);
   const [filters, setFilters] = useState({
-    dateFrom: '',
-    dateTo: '',
-    status: '',
-    department: '',
+    dateFrom: "",
+    dateTo: "",
+    status: "",
+    department: "",
   });
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
 
   useEffect(() => {
     const fetchGrievances = async () => {
       try {
-        const response = await axios.get('http://localhost:8989/api/grievances');
+        const response = await axios.get(
+          "http://localhost:8989/api/grievances"
+        );
         setGrievances(response.data);
       } catch (error) {
-        console.error('Error fetching grievances:', error);
+        console.error("Error fetching grievances:", error);
       }
     };
 
     fetchGrievances();
 
-    const storedUsername = localStorage.getItem('ceoUsername');
+    const storedUsername = localStorage.getItem("ceoUsername");
     if (storedUsername) {
       setUsername(storedUsername);
     }
@@ -114,13 +116,22 @@ const CEOGrievanceReport = () => {
   };
 
   const filteredGrievances = grievances.filter((grievance) => {
-    const formattedGrievanceDate = format(new Date(grievance.date), 'yyyy-MM-dd');
-    const matchesDateFrom = !filters.dateFrom || formattedGrievanceDate >= filters.dateFrom;
-    const matchesDateTo = !filters.dateTo || formattedGrievanceDate <= filters.dateTo;
-    const matchesStatus = !filters.status || grievance.status === filters.status;
-    const matchesDepartment = !filters.department || grievance.department === filters.department;
+    const formattedGrievanceDate = format(
+      new Date(grievance.date),
+      "yyyy-MM-dd"
+    );
+    const matchesDateFrom =
+      !filters.dateFrom || formattedGrievanceDate >= filters.dateFrom;
+    const matchesDateTo =
+      !filters.dateTo || formattedGrievanceDate <= filters.dateTo;
+    const matchesStatus =
+      !filters.status || grievance.status === filters.status;
+    const matchesDepartment =
+      !filters.department || grievance.department === filters.department;
 
-    return matchesDateFrom && matchesDateTo && matchesStatus && matchesDepartment;
+    return (
+      matchesDateFrom && matchesDateTo && matchesStatus && matchesDepartment
+    );
   });
 
   return (
@@ -129,15 +140,19 @@ const CEOGrievanceReport = () => {
         <Greeting>
           <AccountCircleIcon
             sx={{
-              marginRight: '10px',
-              fontSize: '30px',
+              marginRight: "10px",
+              fontSize: "30px",
               color: theme.palette.primary.main,
             }}
           />
           Hello, {username}!
         </Greeting>
         <ButtonGroup>
-          <Button className="back" onClick={() => navigate(-1)} startIcon={<ArrowBackIcon />}>
+          <Button
+            className="back"
+            onClick={() => navigate(-1)}
+            startIcon={<ArrowBackIcon />}
+          >
             Back
           </Button>
         </ButtonGroup>
@@ -219,7 +234,9 @@ const CEOGrievanceReport = () => {
               filteredGrievances.map((grievance) => (
                 <TableRow key={grievance.id}>
                   <TableCell>{grievance.grievanceNumber}</TableCell>
-                  <TableCell>{format(new Date(grievance.date), 'dd-MM-yyyy')}</TableCell>
+                  <TableCell>
+                    {format(new Date(grievance.date), "dd-MM-yyyy")}
+                  </TableCell>
                   <TableCell>{grievance.department}</TableCell>
                   <TableCell>{grievance.employee}</TableCell>
                   <TableCell>{grievance.status}</TableCell>

@@ -1,106 +1,73 @@
-/* Container Styling */
-.container-fluid {
-  background-color: #ffffff;
-  padding: 2rem;
+/* Main Dashboard Container - Center charts and table */
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 20px; /* Adds space between charts and other content */
 }
 
-/* Card Styling */
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: none;
-  border-radius: 10px;
+/* Styling for Bar Chart */
+.bar-chart-container {
+  width: 100%;
+  max-width: 600px; /* Adjust max-width for better control */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
 }
 
-.card-body {
-  padding: 1.5rem;
+/* Styling for Line Chart */
+.line-chart-container {
+  width: 100%;
+  max-width: 600px; /* Adjust max-width for better control */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
 }
 
-.card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #333;
+/* Styling for the Top Employees Table */
+/* Styling for the Top Employees Table */
+.table-container {
+  width: 100%;
+  max-width: 300px; /* Make the table width even smaller */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 0 auto; /* Ensures the table is centered horizontally */
+  overflow-x: auto; /* Ensures content fits within the container */
 }
 
-/* Grievance Counts Styling */
-.card-text {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-/* Bar and Line Chart Styling */
-.recharts-wrapper {
-  margin: auto;
-}
-
-/* Table Styling */
-.table {
-  margin-top: 1rem;
-  border-radius: 10px;
-  overflow: hidden;
-  border: none;
-}
-
-.table th {
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-}
-
-.table td {
-  font-size: 1rem;
-  padding: 0.75rem;
-  border: none;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
-}
-
-.table-hover tbody tr:hover {
-  background-color: #e9ecef;
-}
-
-/* Button Styling */
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 0.75rem 2rem;
-  transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-/* Row Spacing */
-.mb-4 {
-  margin-bottom: 2rem;
-}
-
-/* Responsive Design */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-  .card {
-    margin-bottom: 1.5rem;
+  .dashboard-container {
+    flex-direction: column; /* Stack charts and table on smaller screens */
+    align-items: center;
   }
 
-  .bar-chart,
-  .line-chart {
-    width: 100%;
-    height: 250px;
-  }
-
-  .btn-primary {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
+  .bar-chart-container,
+  .line-chart-container,
+  .table-container {
+    max-width: 100%; /* Allow the elements to take full width on small screens */
   }
 }
+/* Base button styling
+.button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+ */
