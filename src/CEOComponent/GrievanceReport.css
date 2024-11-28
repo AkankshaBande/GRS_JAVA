@@ -26,8 +26,8 @@
   /* Input and select styling */
   input,
   select {
-    padding: 8px;
-    margin-top: 5px;
+    padding: 2px;
+    margin-top: 0px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px; /* Consistent width for all inputs */

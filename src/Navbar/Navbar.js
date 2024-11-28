@@ -53,7 +53,7 @@ const Navbar = () => {
                                     onClick={handleLogout}
                                     style={{ textDecoration: 'none', color: 'inherit' }}
                                 >
-                                    <img src="/logouticon (2).png" alt="Logout icon" className="nav-icon" /> Logout
+                                    <img src="/logout.jpg" alt="Logout icon" className="nav-icon" /> Logout
                                 </button>
                             </li>
                         ) : (
