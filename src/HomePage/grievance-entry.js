@@ -84,8 +84,6 @@ const GrievanceEntry = () => {
     const maxLength = 50;
 
     switch (name) {
-      
-      
       case "complainantName":
         if (trimmedValue === "" || !isAlphabetic(trimmedValue)) {
           errorMessage = "फक्त अक्षरे असावीत आणि हे क्षेत्र रिक्त असू नये.";
@@ -245,24 +243,24 @@ const GrievanceEntry = () => {
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3">
-  <Form.Label style={{ textAlign: "left", display: "block" }}>
-    पद *
-  </Form.Label>
-  <Form.Select
-    name="designation"
-    value={formData.designation}
-    onChange={handleChange}
-    isInvalid={!!errors.designation}
-    required
-  >
-    <option value="">पद निवडा</option>
-    <option value="Manager">Manager</option>
-    <option value="Clerk">Clerk</option>
-  </Form.Select>
-  <Form.Control.Feedback type="invalid">
-    {errors.designation}
-  </Form.Control.Feedback>
-</Form.Group>
+          <Form.Label style={{ textAlign: "left", display: "block" }}>
+            पद *
+          </Form.Label>
+          <Form.Select
+            name="designation"
+            value={formData.designation}
+            onChange={handleChange}
+            isInvalid={!!errors.designation}
+            required
+          >
+            <option value="">पद निवडा</option>
+            <option value="Manager">Manager</option>
+            <option value="Clerk">Clerk</option>
+          </Form.Select>
+          <Form.Control.Feedback type="invalid">
+            {errors.designation}
+          </Form.Control.Feedback>
+        </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label style={{ textAlign: "left", display: "block" }}>
@@ -277,9 +275,9 @@ const GrievanceEntry = () => {
           >
             <option value="">कर्मचारी निवडा</option>
             <option value="Employee 1">emp1</option>
-            <option value="Employee 2">Emily Davis</option>
-            <option value="Employee 3">Sanjana Gupta</option>
-            <option value="Employee 4">Manoj Sharma</option>
+            <option value="Emily Davis">Emily Davis</option>
+            <option value="Sanjana Gupta">Sanjana Gupta</option>
+            <option value="Manoj Sharma">Manoj Sharma</option>
             <option value="Employee 5">emp5</option>
           </Form.Select>
           <Form.Control.Feedback type="invalid">

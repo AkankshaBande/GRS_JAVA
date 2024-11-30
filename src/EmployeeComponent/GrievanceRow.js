@@ -228,9 +228,7 @@ const GrievanceRow = ({
             </select>
 
             <label>Employee Name:</label>
-            <input
-              type="text"
-              placeholder="Enter Name"
+            <select
               value={transferDetails.employeeName}
               onChange={(e) =>
                 setTransferDetails({
@@ -238,8 +236,15 @@ const GrievanceRow = ({
                   employeeName: e.target.value,
                 })
               }
-              style={inputStyle} // Apply the same width style
-            />
+              style={inputStyle}
+            >
+              <option value="">Select Employee</option>
+              <option value="Employee 1">emp1</option>
+              <option value="Emily Davis">Emily Davis</option>
+              <option value="Sanjana Gupta">Sanjana Gupta</option>
+              <option value="Manoj Sharma">Manoj Sharma</option>
+              <option value="Employee 5">emp5</option>
+            </select>
 
             <div style={modalActionsStyle}>
               <button
@@ -253,7 +258,7 @@ const GrievanceRow = ({
                 }
                 onClick={handleTransferSubmit}
               >
-                Submit Transfer
+                Transfer
               </button>
               <button
                 style={buttonStyle}
