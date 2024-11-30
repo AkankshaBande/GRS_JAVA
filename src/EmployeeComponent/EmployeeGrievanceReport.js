@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Import the icon
+import GrievanceTable from "./GrievanceTable";
 import styled from "styled-components";
-import { useTheme } from "@mui/material/styles"; // Import the theme hook
-import GrievanceTable from "./GrievanceTable"; // Assuming GrievanceTable is already set up
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Import the icon
+import Swal from "sweetalert2"; // Import SweetAlert2
 
+// Styled Components
 const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -13,7 +14,6 @@ const Navbar = styled.div`
   padding: 10px 20px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
 `;
 
 const Greeting = styled.div`
@@ -35,8 +35,7 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   background-color: #007bff; /* Primary color */
-
-  &.back:hover {
+  &:hover {
     background-color: #0056b3; /* Darker shade on hover */
   }
 `;
@@ -45,13 +44,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #fff; /* White background */
-  border: 1px solid #ddd;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 1200px; /* Limit the width of the report section */
+  margin-top: 2rem;
+  padding: 1rem;
+  min-height: 100vh;
 `;
 
 const Title = styled.h3`
@@ -64,7 +59,6 @@ const EmployeeGrievanceReport = () => {
   const [grievances, setGrievances] = useState([]);
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
-  const theme = useTheme(); // Access Material-UI theme
 
   useEffect(() => {
     const fetchGrievances = async () => {
@@ -88,35 +82,170 @@ const EmployeeGrievanceReport = () => {
     }
   }, []);
 
+  const updateGrievanceStatus = (
+    grievanceId,
+    newStatus,
+    rejectReason = null
+  ) => {
+    setGrievances((prevGrievances) =>
+      prevGrievances.map((g) =>
+        g.grievanceId === grievanceId
+          ? { ...g, status: newStatus, rejectReason }
+          : g
+      )
+    );
+  };
+
+  const handleAccept = async (grievanceId) => {
+    try {
+      const grievance = grievances.find((g) => g.grievanceId === grievanceId);
+      const updatedGrievance = { ...grievance, status: "accepted" };
+      await axios.put(
+        `http://localhost:8989/grievance/${grievanceId}`,
+        updatedGrievance
+      );
+      updateGrievanceStatus(grievanceId, "accepted");
+      Swal.fire({
+        icon: "success",
+        title: "Grievance Accepted",
+        text: `Grievance ${grievanceId} has been accepted successfully.`,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Failed to accept grievance ${grievanceId}.`,
+      });
+      console.error("Error accepting grievance:", error);
+    }
+  };
+
+  const handleReject = async (grievanceId, reason) => {
+    try {
+      const grievance = grievances.find((g) => g.grievanceId === grievanceId);
+      const updatedGrievance = {
+        ...grievance,
+        status: "rejected",
+        rejectReason: reason,
+      };
+      await axios.put(
+        `http://localhost:8989/grievance/${grievanceId}`,
+        updatedGrievance
+      );
+      updateGrievanceStatus(grievanceId, "rejected", reason);
+      Swal.fire({
+        icon: "success",
+        title: "Grievance Rejected",
+        text: `Grievance ${grievanceId} has been rejected with reason: ${reason}.`,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Failed to reject grievance ${grievanceId}.`,
+      });
+      console.error("Error rejecting grievance:", error);
+    }
+  };
+
+  const handleTransfer = async (grievanceId, transferDetails) => {
+    try {
+      const grievance = grievances.find((g) => g.grievanceId === grievanceId);
+      const updatedGrievance = {
+        ...grievance,
+        department: transferDetails.department,
+        status: "transferred",
+        assignedTo: transferDetails.employeeName,
+        designation: transferDetails.designation,
+      };
+      await axios.put(
+        `http://localhost:8989/grievance/${grievanceId}`,
+        updatedGrievance
+      );
+      setGrievances((prevGrievances) =>
+        prevGrievances.map((g) =>
+          g.grievanceId === grievanceId ? updatedGrievance : g
+        )
+      );
+      Swal.fire({
+        icon: "success",
+        title: "Grievance Transferred",
+        text: `Grievance ${grievanceId} has been transferred to ${transferDetails.employeeName} (${transferDetails.designation} in ${transferDetails.department}).`,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Failed to transfer grievance ${grievanceId}.`,
+      });
+      console.error("Error transferring grievance:", error);
+    }
+  };
+
+  const handleResolve = async (grievanceId) => {
+    try {
+      const grievance = grievances.find((g) => g.grievanceId === grievanceId);
+      const updatedGrievance = { ...grievance, status: "resolved" };
+      await axios.put(
+        `http://localhost:8989/grievance/${grievanceId}`,
+        updatedGrievance
+      );
+      updateGrievanceStatus(grievanceId, "resolved");
+      Swal.fire({
+        icon: "success",
+        title: "Grievance Resolved",
+        text: `Grievance ${grievanceId} has been resolved successfully.`,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: `Failed to resolve grievance ${grievanceId}.`,
+      });
+      console.error("Error resolving grievance:", error);
+    }
+  };
+
   const handleBack = () => {
-    navigate("/employee-grievance-dashboard");
+    Swal.fire({
+      icon: "info",
+      title: "Redirecting",
+      text: "Returning to Employee Grievance Dashboard.",
+      timer: 1500,
+      showConfirmButton: false,
+    }).then(() => {
+      navigate("/employee-grievance-dashboard");
+    });
   };
 
   return (
     <>
+      {/* Navbar Section */}
       <Navbar>
         <Greeting>
           <AccountCircleIcon
             sx={{
               fontSize: "30px",
               marginRight: "10px",
-              color: theme.palette.primary.main,
+              color: "#007bff",
             }}
           />
           Hello, {username}!
         </Greeting>
         <ButtonGroup>
-          <Button className="back" onClick={handleBack}>
-            Back
-          </Button>
+          <Button onClick={handleBack}>Back</Button>
         </ButtonGroup>
       </Navbar>
 
       <Container>
         <Title>EMPLOYEE GRIEVANCE REPORT</Title>
-
-        {/* Grievance Table: Reusing GrievanceTable component */}
-        <GrievanceTable grievances={grievances} />
+        <GrievanceTable
+          grievances={grievances}
+          onAccept={handleAccept}
+          onReject={handleReject}
+          onTransfer={handleTransfer}
+          onResolve={handleResolve}
+        />
       </Container>
     </>
   );

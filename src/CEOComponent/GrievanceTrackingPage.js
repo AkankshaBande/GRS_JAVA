@@ -195,11 +195,7 @@ const GrievanceTrackingPage = () => {
             </table>
           </div>
         ) : (
-          searchId && (
-            <p className="no-grievance-message">
-              No grievance found with this number.
-            </p>
-          )
+          searchId && <p className="no-grievance-message"></p>
         )}
       </Container>
     </>

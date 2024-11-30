@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './GrievanceReport.css';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./GrievanceReport.css";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import styled from "styled-components";
 
 // Styled Components for Navbar and Header
 const Navbar = styled.div`
@@ -86,8 +86,8 @@ const PaginationButton = styled.button`
   padding: 8px 15px;
   margin: 0 5px;
   border: 1px solid #ddd;
-  background-color: ${(props) => (props.active ? '#007bff' : 'white')};
-  color: ${(props) => (props.active ? 'white' : 'black')};
+  background-color: ${(props) => (props.active ? "#007bff" : "white")};
+  color: ${(props) => (props.active ? "white" : "black")};
   border-radius: 5px;
   cursor: pointer;
 
@@ -106,9 +106,9 @@ const GrievanceReport = () => {
   const [grievances, setGrievances] = useState([]);
   const [filteredGrievances, setFilteredGrievances] = useState([]);
   const [filters, setFilters] = useState({
-    dateRange: { start: '', end: '' },
-    status: '',
-    department: '',
+    dateRange: { start: "", end: "" },
+    status: "",
+    department: "",
   });
 
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
@@ -116,17 +116,21 @@ const GrievanceReport = () => {
   const navigate = useNavigate();
 
   // Assume username is stored in localStorage
-  const username = localStorage.getItem('ceoUsername') || 'User';
+  const username = localStorage.getItem("ceoUsername") || "User";
 
   useEffect(() => {
     const fetchGrievances = async () => {
       try {
-        const response = await axios.get('http://localhost:8989/grievance/getAll');
-        const sortedGrievances = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const response = await axios.get(
+          "http://localhost:8989/grievance/getAll"
+        );
+        const sortedGrievances = response.data.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
         setGrievances(sortedGrievances);
         setFilteredGrievances(sortedGrievances);
       } catch (error) {
-        console.error('Error fetching grievances:', error);
+        console.error("Error fetching grievances:", error);
       }
     };
 
@@ -136,8 +140,8 @@ const GrievanceReport = () => {
   // Format the date as DD-MM-YYYY
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };
@@ -149,12 +153,14 @@ const GrievanceReport = () => {
     // Filter by date range
     if (filters.dateRange.start) {
       filteredData = filteredData.filter(
-        (grievance) => new Date(grievance.date) >= new Date(filters.dateRange.start)
+        (grievance) =>
+          new Date(grievance.date) >= new Date(filters.dateRange.start)
       );
     }
     if (filters.dateRange.end) {
       filteredData = filteredData.filter(
-        (grievance) => new Date(grievance.date) <= new Date(filters.dateRange.end)
+        (grievance) =>
+          new Date(grievance.date) <= new Date(filters.dateRange.end)
       );
     }
 
@@ -170,7 +176,8 @@ const GrievanceReport = () => {
     if (filters.department) {
       filteredData = filteredData.filter(
         (grievance) =>
-          grievance.department?.toLowerCase() === filters.department.toLowerCase()
+          grievance.department?.toLowerCase() ===
+          filters.department.toLowerCase()
       );
     }
 
@@ -181,7 +188,10 @@ const GrievanceReport = () => {
   // Handle pagination
   const indexOfLastGrievance = currentPage * itemsPerPage;
   const indexOfFirstGrievance = indexOfLastGrievance - itemsPerPage;
-  const currentGrievances = filteredGrievances.slice(indexOfFirstGrievance, indexOfLastGrievance);
+  const currentGrievances = filteredGrievances.slice(
+    indexOfFirstGrievance,
+    indexOfLastGrievance
+  );
 
   const totalPages = Math.ceil(filteredGrievances.length / itemsPerPage);
 
@@ -190,13 +200,13 @@ const GrievanceReport = () => {
   // Navigate back to CEO Dashboard
   const handleBack = () => {
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Returning to CEO Dashboard',
+      position: "center",
+      icon: "success",
+      title: "Returning to CEO Dashboard",
       showConfirmButton: false,
       timer: 1500,
     }).then(() => {
-      navigate('/ceo-dashboard');
+      navigate("/ceo-dashboard");
     });
   };
 
@@ -205,7 +215,9 @@ const GrievanceReport = () => {
       {/* Navbar Section */}
       <Navbar>
         <Greeting>
-          <FaUserCircle style={{ marginRight: '10px', fontSize: '30px', color: '#007bff' }} />
+          <FaUserCircle
+            style={{ marginRight: "10px", fontSize: "30px", color: "#007bff" }}
+          />
           Hello, {username}!
         </Greeting>
         <Button onClick={handleBack}>Back</Button>
@@ -252,10 +264,10 @@ const GrievanceReport = () => {
               }
             >
               <option value="">All</option>
-              <option value="Pending">Pending</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Resolved">Resolved</option>
-              <option value="Rejected">Rejected</option>
+              <option value="Pending">pending</option>
+              <option value="Transferred">transferred</option>
+              <option value="Resolved">resolved</option>
+              <option value="Rejected">rejected</option>
             </FilterSelect>
           </div>
           <div>
@@ -267,10 +279,11 @@ const GrievanceReport = () => {
               }
             >
               <option value="">All</option>
-              <option value="HR">HR</option>
+              <option value="Health">health</option>
+              <option value="Education">education</option>
+              <option value="Finance">finance</option>
               <option value="IT">IT</option>
-              <option value="Finance">Finance</option>
-              <option value="Admin">Admin</option>
+              <option value="Operations">operations</option>
             </FilterSelect>
           </div>
         </FiltersContainer>
@@ -305,7 +318,7 @@ const GrievanceReport = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="8" style={{ textAlign: 'center' }}>
+                <td colSpan="8" style={{ textAlign: "center" }}>
                   No grievances found
                 </td>
               </tr>
