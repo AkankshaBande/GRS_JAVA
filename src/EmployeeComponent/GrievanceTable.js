@@ -25,7 +25,7 @@ const GrievanceTable = ({
         <tbody>
           {grievances.map((grievance) => (
             <GrievanceRow
-              key={grievance.grievanceId}
+              key={grievance.id}
               grievance={grievance}
               onAccept={onAccept}
               onReject={onReject}

@@ -123,7 +123,7 @@ const GrievanceTrackingPage = () => {
                   <td>
                     <strong>Grievance ID</strong>
                   </td>
-                  <td>{grievance.grievanceId}</td>
+                  <td>{grievance.id}</td>
                 </tr>
                 <tr>
                   <td>
@@ -135,7 +135,11 @@ const GrievanceTrackingPage = () => {
                   <td>
                     <strong>Department</strong>
                   </td>
-                  <td>{grievance.department}</td>
+                  <td>
+                    {grievance.department
+                      ? grievance.department.departmentName
+                      : "N/A"}
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -195,7 +199,11 @@ const GrievanceTrackingPage = () => {
             </table>
           </div>
         ) : (
-          searchId && <p className="no-grievance-message"></p>
+          searchId && (
+            <p className="no-grievance-message">
+             
+            </p>
+          )
         )}
       </Container>
     </>

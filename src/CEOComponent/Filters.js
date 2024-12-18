@@ -1,5 +1,5 @@
 import React from "react";
-import './GrievanceReport.css';
+import "./GrievanceReport.css";
 
 function Filters({ filters, setFilters }) {
   const handleChange = (e) => {
@@ -22,7 +22,7 @@ function Filters({ filters, setFilters }) {
   };
 
   return (
-    <div>
+    <div className="filters-container">
       <label>
         Date From:
         <input
@@ -57,9 +57,9 @@ function Filters({ filters, setFilters }) {
           onChange={handleChange}
         >
           <option value="">All</option>
-          <option value="education">EDUCATION</option>
-          <option value="health">HEALTH</option>
-          <option value="finance">FINANCE</option>
+          <option value="education">education</option>
+          <option value="health">health</option>
+          <option value="finance">finance</option>
         </select>
       </label>
     </div>

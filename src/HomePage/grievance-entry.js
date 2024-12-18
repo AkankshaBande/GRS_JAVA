@@ -95,24 +95,36 @@ const GrievanceEntry = () => {
       case "aadhaarNo":
         if (
           trimmedValue &&
-          (!isNumeric(trimmedValue) ||
-            trimmedValue.length !== 12 ||
-            /^0{12}$/.test(trimmedValue))
+          (!isNumeric(trimmedValue) || // Check if not numeric
+            trimmedValue.length !== 12 || // Check if length is not 12
+            /^0{12}$/.test(trimmedValue) || // Reject if all zeros
+            (trimmedValue.match(/0/g) || []).length > 2 || // Reject if more than 2 zeros
+            /^[01]/.test(trimmedValue) || // Reject if starts with 0 or 1
+            [...new Set(trimmedValue)].some(
+              (digit) =>
+                (trimmedValue.match(new RegExp(digit, "g")) || []).length > 3
+            )) // Reject if any digit appears more than 2 times
         ) {
-          errorMessage = "फक्त 12 अंक असावेत आणि सर्व शून्ये मान्य नाहीत.";
+          errorMessage =
+            "फक्त 12 अंक असावेत, सर्व शून्ये मान्य नाहीत, फक्त दोन शून्ये वैध आहेत, क्रमांक 0 किंवा 1 ने सुरू होऊ शकत नाही.";
         }
         break;
 
-      case "mobileNo":
-        if (
-          trimmedValue &&
-          (!isNumeric(trimmedValue) ||
-            trimmedValue.length !== 10 ||
-            /^0{10}$/.test(trimmedValue))
-        ) {
-          errorMessage = "फक्त 10 अंक असावेत आणि सर्व शून्ये मान्य नाहीत.";
-        }
-        break;
+        case "mobileNo":
+          if (
+              trimmedValue &&
+              (!isNumeric(trimmedValue) || // Check if not numeric
+               trimmedValue.length !== 10 || // Check if length is not 10
+               /^0{10}$/.test(trimmedValue) || // Reject if all zeros
+               /^0/.test(trimmedValue) || // Reject if starts with 0
+               [...new Set(trimmedValue)].some(
+                  digit => (trimmedValue.match(new RegExp(digit, "g")) || []).length >4
+               ) // Reject if any digit appears more than 4 times
+              )
+          ) {
+              errorMessage = "फक्त 10 अंक असावेत, सर्व शून्ये मान्य नाहीत, क्रमांक 0 ने सुरू होऊ शकत नाही.";
+          }
+          break;
 
       default:
         break;
@@ -144,9 +156,9 @@ const GrievanceEntry = () => {
         errorMessage = "कृपया फक्त PDF, PNG, JPG, किंवा JPEG फाइल अपलोड करा.";
       }
 
-      const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+      const maxSize = 2 * 1024 * 1024; // 2MB in bytes
       if (file.size > maxSize) {
-        errorMessage = "फाइल आकार 5MB पेक्षा जास्त नसावा.";
+        errorMessage = "फाइल आकार 2MB पेक्षा जास्त नसावा.";
       }
     }
 
@@ -274,11 +286,11 @@ const GrievanceEntry = () => {
             required
           >
             <option value="">कर्मचारी निवडा</option>
-            <option value="Employee 1">emp1</option>
-            <option value="Emily Davis">Emily Davis</option>
-            <option value="Sanjana Gupta">Sanjana Gupta</option>
-            <option value="Manoj Sharma">Manoj Sharma</option>
-            <option value="Employee 5">emp5</option>
+            <option value="emp1">emp1</option>
+            <option value="emily_davis">emily davis</option>
+            <option value="akanksha">akanksha</option>
+            <option value="rajat">rajat</option>
+            <option value="puja">puja </option>
           </Form.Select>
           <Form.Control.Feedback type="invalid">
             {errors.employeeName}

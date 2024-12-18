@@ -174,11 +174,15 @@ const GrievanceReport = () => {
 
     // Filter by department (case-insensitive)
     if (filters.department) {
-      filteredData = filteredData.filter(
-        (grievance) =>
-          grievance.department?.toLowerCase() ===
-          filters.department.toLowerCase()
-      );
+      filteredData = filteredData.filter((grievance) => {
+        const departmentName =
+          typeof grievance.department === "string"
+            ? grievance.department
+            : grievance.department?.departmentName;
+        return (
+          departmentName?.toLowerCase() === filters.department.toLowerCase()
+        );
+      });
     }
 
     setFilteredGrievances(filteredData);
@@ -265,7 +269,7 @@ const GrievanceReport = () => {
             >
               <option value="">All</option>
               <option value="Pending">pending</option>
-              <option value="Transferred">transferred</option>
+
               <option value="Resolved">resolved</option>
               <option value="Rejected">rejected</option>
             </FilterSelect>
@@ -279,11 +283,9 @@ const GrievanceReport = () => {
               }
             >
               <option value="">All</option>
-              <option value="Health">health</option>
-              <option value="Education">education</option>
-              <option value="Finance">finance</option>
-              <option value="IT">IT</option>
-              <option value="Operations">operations</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+              <option value="Finance">Finance</option>
             </FilterSelect>
           </div>
         </FiltersContainer>
@@ -305,15 +307,19 @@ const GrievanceReport = () => {
           <tbody>
             {currentGrievances.length > 0 ? (
               currentGrievances.map((grievance) => (
-                <tr key={grievance.grievanceId}>
-                  <td>{grievance.grievanceId}</td>
+                <tr key={grievance.id}>
+                  <td>{grievance.id}</td>
                   <td>{formatDate(grievance.date)}</td>
-                  <td>{grievance.department}</td>
-                  <td>{grievance.designation}</td>
-                  <td>{grievance.employeeName}</td>
-                  <td>{grievance.complainantName}</td>
-                  <td>{grievance.type}</td>
-                  <td>{grievance.status}</td>
+                  <td>
+                    {typeof grievance.department === "string"
+                      ? grievance.department
+                      : grievance.department?.departmentName || "N/A"}
+                  </td>
+                  <td>{grievance.designation || "N/A"}</td>
+                  <td>{grievance.employeeName || "Unassigned"}</td>
+                  <td>{grievance.complainantName || "N/A"}</td>
+                  <td>{grievance.type || "N/A"}</td>
+                  <td>{grievance.status || "Unknown"}</td>
                 </tr>
               ))
             ) : (

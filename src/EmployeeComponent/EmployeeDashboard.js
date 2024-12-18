@@ -57,7 +57,6 @@ const EmployeeDashboard = () => {
     { name: "pending", count: 0 },
     { name: "resolved", count: 0 },
     { name: "rejected", count: 0 },
-    { name: "transferred", count: 0 },
   ]);
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
@@ -79,15 +78,11 @@ const EmployeeDashboard = () => {
         const rejectedCount = fetchedGrievances.filter(
           (grievance) => grievance.status === "rejected"
         ).length;
-        const transferredCount = fetchedGrievances.filter(
-          (grievance) => grievance.status === "transferred"
-        ).length;
 
         setData([
           { name: "pending", count: pendingCount },
           { name: "resolved", count: resolvedCount },
           { name: "rejected", count: rejectedCount },
-          { name: "transferred", count: transferredCount },
         ]);
       } catch (error) {
         console.error("Error fetching grievance data:", error);
