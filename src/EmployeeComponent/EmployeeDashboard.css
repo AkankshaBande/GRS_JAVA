@@ -1,0 +1,45 @@
+/* EmployeeDashboard.css */
+
+.dashboard-container {
+  padding: 2rem; /* Reduced padding to minimize space */
+}
+
+.greeting-container {
+  display: flex;
+  justify-content: flex-start;  /* Align to the left */
+  margin-bottom: 1rem;  /* Reduced space below the greeting */
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 1.5rem; /* Reduced bottom margin */
+}
+
+.card {
+  margin-bottom: 1.5rem; /* Reduced space between cards */
+}
+
+.report-button {
+  margin-top: 1rem; /* Reduced space at the top */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.chart {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .greeting-container {
+    justify-content: center;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+}

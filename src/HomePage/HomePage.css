@@ -1,0 +1,192 @@
+.homepage {
+    background-color: rgb(15, 84, 124);
+    color: black;
+}
+
+.navbar-custom {
+    background-color: rgb(38, 125, 117);
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+    background-color: rgb(38, 125, 117);
+    color: white !important; 
+}
+
+#nav_home {
+    background-color: rgb(38, 125, 117);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgb(17, 77, 129); 
+}
+
+.homepage-content {
+    color: black; 
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: rgb(17, 77, 129); 
+}
+
+h2 {
+    color: darkblue; 
+    margin-bottom: 15px; 
+}
+
+.footer {
+    background-color: black; 
+    color: rgb(15, 5, 48); 
+    padding: 20px 0; 
+    position: relative; 
+    bottom: 0; 
+    width: 100%; 
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+}
+
+.social-icon {
+    color: rgb(16, 9, 74);
+    font-size: 30px; 
+    transition: color 0.3s; 
+}
+
+.social-icon:hover {
+    color: violet; 
+}
+
+.container {
+    margin-top: 20px; 
+}
+
+.carousel-inner img {
+    height: 600px; 
+    object-fit: cover; 
+    width: 100%;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    bottom: 20px;
+}
+
+.carousel-caption a:hover {
+    text-decoration: underline; 
+}
+
+.small-image {
+    width: 60px; 
+    height: auto; 
+}
+
+.square-card {
+    width: 500px; 
+    height: 300px; 
+    position: relative; 
+    overflow: hidden; 
+    margin: auto; 
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6; 
+}
+
+.btn-custom {
+    background-color: rgb(15, 84, 124);
+    color: white; 
+}
+
+.btn-custom:hover {
+    background-color: white; 
+}
+
+.section-title {
+    font-size: 2rem; 
+    margin-bottom: 1rem; 
+}
+
+.section-text {
+    font-size: 1.55rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.card-title {
+    font-size: 1.8rem; 
+    margin-bottom: 1rem; 
+}
+
+.card-text {
+    font-size: 1.25rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.features-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-around; 
+    margin-top: 1.5rem; 
+}
+
+.feature-item {
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6; 
+    border-radius: 8px; 
+    padding: 1rem; 
+    margin: 0.5rem; 
+    flex: 1 1 200px; 
+    text-align: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.feature-item h5 {
+    margin-bottom: 0.5rem; 
+}
+
+.feature-item p {
+    margin: 0; 
+}
+
+.nav-icon {
+    width: 20px; 
+    height: auto; 
+    margin-right: 5px; 
+}
+
+#block {
+    width: 100%;
+}
+
+.homepage--content {
+    width: 100%;
+    margin-top: 2rem;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.homepage__footer {
+    background-color: #122e4a; 
+    padding: 1rem 0;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.feature-item {
+    background-color: #0b5a64;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 250px; 
+    text-align: center;
+}

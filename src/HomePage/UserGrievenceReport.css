@@ -1,0 +1,133 @@
+/* UserGrievanceReport.css */
+
+/* General container styling */
+.container {
+  margin: 20px;
+  padding: 10px;
+  max-width: 12000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2rem;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #31a785;
+  color: white;
+  font-weight: bold;
+}
+
+.table td {
+  background-color: #fff;
+}
+
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Pagination styling */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #00ff8c;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: #f1f1f1;
+}
+
+.page-item.disabled .page-link {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-item.active .page-link {
+  background-color: #34a073;
+  color: #fff;
+  border-color: black;
+}
+
+/* Logout button container */
+.logout-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Custom Button Styling (Bootstrap overrides) */
+button.page-link {
+  font-size: 14px;
+  color: #137e67;
+}
+
+button.page-link:hover {
+  background-color: #f0f0f0;
+  border-color: #1da982;
+}
+
+/* Adding some spacing between items */
+.container .pagination-container,
+.container .logout-container {
+  margin-top: 30px;
+}
+/* Responsive Styling for smaller screens */
+@media (max-width: 768px) {
+  .table {
+      font-size: 12px;
+  }
+
+  .pagination-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .page-link {
+      padding: 8px 12px;
+      font-size: 12px;
+  }
+
+  .logout-container {
+      margin-top: 15px;
+  }
+}
